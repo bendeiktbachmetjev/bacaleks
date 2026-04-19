@@ -20,6 +20,10 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSub, setOpenSub] = useState<string | null>(null);
 
+  // Dark hero mode: only on Home, only while we are still above the hero.
+  // When active → transparent header + white text.
+  const darkMode = pathname === "/" && !scrolled;
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -44,28 +48,50 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
         "border-b",
-        scrolled
-          ? "border-[var(--color-border)] bg-white/70"
-          : "border-transparent bg-white/40",
-        "backdrop-blur-xl supports-[backdrop-filter]:bg-white/60",
+        darkMode
+          ? "border-transparent bg-transparent"
+          : scrolled
+            ? "border-[var(--color-border)] bg-white/70 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60"
+            : "border-transparent bg-white/40 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60",
       )}
-      style={{ WebkitBackdropFilter: "saturate(180%) blur(20px)" }}
+      style={
+        darkMode
+          ? undefined
+          : { WebkitBackdropFilter: "saturate(180%) blur(20px)" }
+      }
     >
       <div className="mx-auto flex h-[64px] w-full max-w-[1240px] items-center gap-4 px-5 sm:h-[68px] sm:px-8 lg:px-12">
         {/* Brand */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 text-[var(--color-atlantic-900)]"
+          className={cn(
+            "group flex items-center gap-2.5 transition-colors",
+            darkMode ? "text-white" : "text-[var(--color-atlantic-900)]",
+          )}
           aria-label={site.name}
         >
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] bg-[var(--color-atlantic-900)] text-white">
+          <span
+            className={cn(
+              "inline-flex h-9 w-9 items-center justify-center rounded-[10px] transition-colors",
+              darkMode
+                ? "bg-white/15 text-white backdrop-blur-sm"
+                : "bg-[var(--color-atlantic-900)] text-white",
+            )}
+          >
             <AnchorIcon size={18} />
           </span>
           <span className="flex flex-col leading-tight">
             <span className="text-[15px] font-semibold tracking-[-0.01em]">
               {site.shortName}
             </span>
-            <span className="eyebrow !text-[9px]">Marine Advisory</span>
+            <span
+              className={cn(
+                "eyebrow !text-[9px]",
+                darkMode && "!text-white/70",
+              )}
+            >
+              Marine Advisory
+            </span>
           </span>
         </Link>
 
@@ -79,6 +105,14 @@ export function Header() {
               item.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(item.href);
+            const linkColor = darkMode
+              ? active
+                ? "text-white"
+                : "text-white/80 hover:text-white"
+              : active
+                ? "text-[var(--color-atlantic-900)]"
+                : "text-[var(--color-slate-800)] hover:text-[var(--color-atlantic-900)]";
+
             if (item.children) {
               const isOpen = openSub === item.label;
               return (
@@ -92,9 +126,7 @@ export function Header() {
                     href={item.href}
                     className={cn(
                       "inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13.5px] font-medium transition-colors",
-                      active
-                        ? "text-[var(--color-atlantic-900)]"
-                        : "text-[var(--color-slate-800)] hover:text-[var(--color-atlantic-900)]",
+                      linkColor,
                     )}
                   >
                     {item.label}
@@ -131,9 +163,7 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "rounded-full px-3 py-2 text-[13.5px] font-medium transition-colors",
-                  active
-                    ? "text-[var(--color-atlantic-900)]"
-                    : "text-[var(--color-slate-800)] hover:text-[var(--color-atlantic-900)]",
+                  linkColor,
                 )}
               >
                 {item.label}
@@ -147,7 +177,12 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border)] bg-white text-[var(--color-atlantic-900)] xl:hidden"
+            className={cn(
+              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors xl:hidden",
+              darkMode
+                ? "border-white/25 bg-white/10 text-white backdrop-blur-sm"
+                : "border-[var(--color-border)] bg-white text-[var(--color-atlantic-900)]",
+            )}
             aria-label="Open navigation"
           >
             <MenuIcon />

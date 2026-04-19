@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container, Section } from "@/components/layout";
 import { PageHero } from "@/components/page-hero";
 import { Card, CardEyebrow, CardTitle } from "@/components/card";
-import { ImagePlaceholder } from "@/components/image-placeholder";
+import { MediaImage } from "@/components/media-image";
 import { WaveIcon } from "@/components/icons";
 import { coverage, site } from "@/lib/site";
 
@@ -61,10 +61,12 @@ export default function CoveragePage() {
               </dl>
             </div>
             <div className="lg:col-span-7">
-              <ImagePlaceholder
-                label="Stylised Baltic map with port markers — dark navy"
+              <MediaImage
+                src="/media/map.jpg"
+                alt="Baltic Sea region shown on a printed world map."
                 aspect="4/3"
-                tone="dark"
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                priority
               />
             </div>
           </Card>

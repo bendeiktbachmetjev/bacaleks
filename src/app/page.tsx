@@ -5,6 +5,7 @@ import { Card, CardEyebrow, CardTitle } from "@/components/card";
 import { BentoGrid, BentoCell } from "@/components/bento";
 import { LinkButton } from "@/components/button";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import { MediaImage } from "@/components/media-image";
 import { HeroVideo } from "@/components/hero-video";
 import {
   AnchorIcon,
@@ -400,10 +401,11 @@ function CoverageTeaser() {
             </div>
           </div>
           <div className="lg:col-span-7">
-            <ImagePlaceholder
-              label="World map — illuminated Baltic region with port pins"
+            <MediaImage
+              src="/media/map.jpg"
+              alt="Baltic Sea region shown on a printed world map."
               aspect="4/3"
-              tone="dark"
+              sizes="(max-width: 1024px) 100vw, 55vw"
             />
           </div>
         </Card>

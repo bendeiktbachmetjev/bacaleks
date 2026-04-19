@@ -69,26 +69,30 @@ body {
   color: #ffffff;
 }
 
-/* Premium heading treatment */
-.display {
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  color: var(--color-atlantic-900);
-  line-height: 1.05;
-}
+/* Typography primitives live in @layer components so their default
+   colours/sizes can be overridden cleanly by Tailwind utilities
+   (e.g. `text-white` on dark sections) without needing !important. */
+@layer components {
+  .display {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--color-atlantic-900);
+  }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-slate-700);
-}
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-slate-700);
+  }
 
-.num {
-  font-family: var(--font-mono);
-  font-feature-settings: "tnum";
-  letter-spacing: -0.01em;
+  .num {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum";
+    letter-spacing: -0.01em;
+  }
 }
 
 /* Focus ring — visible but clean */

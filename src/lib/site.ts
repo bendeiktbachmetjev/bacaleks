@@ -1,19 +1,21 @@
 export const site = {
-  name: "Bacaleks Marine",
+  name: "Bacaleks",
   shortName: "Bacaleks",
-  legalName: "Bacaleks Marine Advisory",
+  legalName: "Bacaleks",
   tagline: "Independent Marine Advisory & Performance Audits",
   subtagline:
     "Chief Engineer expertise meeting maritime law precision. Based in Klaipėda, serving the Baltic region.",
   location: "Klaipėda, Lithuania",
-  coordinates: "55.7033° N, 21.1443° E",
-  email: "office@bacaleks.com", // TODO: replace with real
-  phone: "+370 000 000 000", // TODO: replace with real
-  emergencyPhone: "+370 000 000 000", // TODO: replace with real
-  whatsapp: "+370 000 000 000",
+  addressLine1: "Karališkas tak. 10",
+  addressLine2: "Slengių k., LT-92343 Klaipėdos r.",
+  coordinates: "55.6686° N, 21.2058° E",
+  email: "bacaleks@bacaleks.com",
+  phone: "+370 685 67278",
+  emergencyPhone: "+370 685 67278",
+  whatsapp: "+370 685 67278",
   telegram: "@bacaleks",
-  founded: 1998,
-  registration: "VAT LT000000000", // TODO: replace with real
+  founded: 2025,
+  registration: "Įmonės kodas 307066187",
 } as const;
 
 export type NavItem = {

@@ -70,8 +70,15 @@ export default function ContactPage() {
                       className="mt-0.5 text-[var(--color-atlantic-900)]"
                     />
                     <div>
-                      <dt className="eyebrow !text-[10px]">Position</dt>
-                      <dd className="num mt-1">{site.coordinates}</dd>
+                      <dt className="eyebrow !text-[10px]">Address</dt>
+                      <dd className="mt-1 text-[14px] leading-[1.5]">
+                        {site.addressLine1}
+                        <br />
+                        {site.addressLine2}
+                      </dd>
+                      <dd className="num mt-1 text-[12px] text-[var(--color-slate-700)]">
+                        {site.coordinates}
+                      </dd>
                     </div>
                   </div>
                 </dl>
