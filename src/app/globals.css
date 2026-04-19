@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   Design tokens — Marine Standard × Apple Aesthetic
+   ============================================================ */
+@theme {
+  /* Brand palette */
+  --color-atlantic-950: #050e1d;
+  --color-atlantic-900: #0a192f;  /* Deep Atlantic — primary */
+  --color-atlantic-800: #112240;
+  --color-atlantic-700: #1a2c4e;
+  --color-slate-900: #1a202c;
+  --color-slate-800: #2d3748;     /* Steel Slate — body text */
+  --color-slate-700: #4a5568;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-border: #e2e8f0;        /* Card border */
+  --color-hairline: #edf1f5;
+  --color-deck: #f5f7fa;          /* Pure Deck — background */
+  --color-paper: #ffffff;
+  --color-orange-600: #e64400;
+  --color-orange-500: #ff4d00;    /* Safety Orange — accent */
+  --color-orange-400: #ff7a3d;
+
+  /* Semantic aliases */
+  --color-background: var(--color-deck);
+  --color-foreground: var(--color-slate-800);
+  --color-primary: var(--color-atlantic-900);
+  --color-accent: var(--color-orange-500);
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, "Liberation Mono", monospace;
+
+  /* Radii */
+  --radius-card: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+
+  /* Shadows — subtle, Apple-like */
+  --shadow-card: 0 1px 2px rgba(10, 25, 47, 0.04),
+    0 4px 16px -8px rgba(10, 25, 47, 0.08);
+  --shadow-card-hover: 0 2px 4px rgba(10, 25, 47, 0.05),
+    0 12px 32px -12px rgba(10, 25, 47, 0.12);
+  --shadow-glass: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 1px 2px rgba(10, 25, 47, 0.04);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   Base
+   ============================================================ */
+html,
+body {
+  background: var(--color-deck);
+  color: var(--color-slate-800);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-atlantic-900);
+  color: #ffffff;
+}
+
+/* Premium heading treatment */
+.display {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-atlantic-900);
+  line-height: 1.05;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-slate-700);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+  letter-spacing: -0.01em;
+}
+
+/* Focus ring — visible but clean */
+:focus-visible {
+  outline: 2px solid var(--color-atlantic-900);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Thin hairline divider */
+.hairline {
+  border-color: var(--color-border);
+}
+
+/* Image placeholder — visible but beautiful */
+.placeholder {
+  background:
+    linear-gradient(135deg, rgba(10, 25, 47, 0.04), rgba(10, 25, 47, 0.10)),
+    repeating-linear-gradient(
+      45deg,
+      rgba(10, 25, 47, 0.035) 0 2px,
+      transparent 2px 16px
+    );
+  color: var(--color-slate-700);
+}
+
+/* Grain/texture overlay for hero */
+.hero-veil {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(10, 25, 47, 0.35), transparent 60%),
+    radial-gradient(ellipse at 80% 60%, rgba(10, 25, 47, 0.55), transparent 65%),
+    linear-gradient(180deg, rgba(5, 14, 29, 0.55), rgba(5, 14, 29, 0.85));
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
