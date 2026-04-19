@@ -52,7 +52,11 @@ function Hero() {
               "radial-gradient(ellipse at 30% 20%, #15315a 0%, #0a192f 55%, #050e1d 100%)",
           }}
         />
-        <HeroVideo src="/media/Hero.mp4" />
+        <HeroVideo
+          srcDesktop="/media/hero-1080.mp4"
+          srcMobile="/media/hero-720.mp4"
+          poster="/media/hero-poster.jpg"
+        />
         {/* Dark veil for text legibility — per instructions.md */}
         <div className="absolute inset-0 hero-veil" />
       </div>
