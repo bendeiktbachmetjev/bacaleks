@@ -5,6 +5,7 @@ import { Card, CardEyebrow, CardTitle } from "@/components/card";
 import { BentoGrid, BentoCell } from "@/components/bento";
 import { LinkButton } from "@/components/button";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import { HeroVideo } from "@/components/hero-video";
 import {
   AnchorIcon,
   ArrowRightIcon,
@@ -42,32 +43,18 @@ export default function HomePage() {
 function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-[var(--color-atlantic-900)] text-white">
-      {/* Background — placeholder for looping marine video */}
+      {/* Background — looping marine video with gradient fallback */}
       <div className="absolute inset-0 -z-10" aria-hidden>
         <div
-          className="absolute inset-0 placeholder"
+          className="absolute inset-0"
           style={{
             background:
               "radial-gradient(ellipse at 30% 20%, #15315a 0%, #0a192f 55%, #050e1d 100%)",
           }}
         />
+        <HeroVideo src="/media/Hero.mp4" />
+        {/* Dark veil for text legibility — per instructions.md */}
         <div className="absolute inset-0 hero-veil" />
-        {/* Subtle wave lines */}
-        <svg
-          className="absolute inset-x-0 bottom-0 w-full opacity-20"
-          viewBox="0 0 1440 200"
-          preserveAspectRatio="none"
-          aria-hidden
-        >
-          <path
-            d="M0,120 C240,60 480,180 720,120 C960,60 1200,180 1440,120 L1440,200 L0,200 Z"
-            fill="rgba(255,255,255,0.06)"
-          />
-          <path
-            d="M0,150 C240,100 480,200 720,150 C960,100 1200,200 1440,150 L1440,200 L0,200 Z"
-            fill="rgba(255,255,255,0.06)"
-          />
-        </svg>
       </div>
 
       <Container className="pt-28 pb-24 sm:pt-32 sm:pb-32 lg:pt-40 lg:pb-40">
