@@ -43,13 +43,21 @@ export function HeroVideo({ srcDesktop, srcMobile, poster }: Props) {
       !!c?.saveData ||
       (c?.effectiveType &&
         ["slow-2g", "2g", "3g"].includes(c.effectiveType));
-    if (mq.matches || slow) {
-      setEnabled(false);
-      return;
-    }
-    setEnabled(true);
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    setSrc(mobile ? srcMobile : srcDesktop);
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      if (mq.matches || slow) {
+        setEnabled(false);
+        return;
+      }
+      setEnabled(true);
+      const mobile = window.matchMedia("(max-width: 768px)").matches;
+      setSrc(mobile ? srcMobile : srcDesktop);
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [srcDesktop, srcMobile]);
 
   // Start playback when in view; pause when off-screen or tab hidden.
@@ -133,7 +141,6 @@ export function HeroVideo({ srcDesktop, srcMobile, poster }: Props) {
         playsInline
         preload="metadata"
         disablePictureInPicture
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error — valid attribute, not yet in lib.dom.d.ts
         disableRemotePlayback=""
         aria-hidden

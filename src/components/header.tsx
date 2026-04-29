@@ -32,11 +32,6 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setOpenSub(null);
-  }, [pathname]);
-
-  useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -124,6 +119,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
+                    onClick={() => setOpenSub(null)}
                     className={cn(
                       "inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13.5px] font-medium transition-colors",
                       linkColor,
@@ -139,6 +135,7 @@ export function Header() {
                           <Link
                             key={sub.href}
                             href={sub.href}
+                            onClick={() => setOpenSub(null)}
                             className="group block rounded-[10px] p-3 hover:bg-[var(--color-deck)]"
                           >
                             <div className="text-[14px] font-semibold text-[var(--color-atlantic-900)]">
@@ -161,6 +158,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setOpenSub(null)}
                 className={cn(
                   "rounded-full px-3 py-2 text-[13.5px] font-medium transition-colors",
                   linkColor,
@@ -255,6 +253,7 @@ function MobileMenu({
                 <li key={item.label} className="flex flex-col">
                   <Link
                     href={item.href}
+                    onClick={onClose}
                     className={cn(
                       "flex items-center justify-between rounded-[12px] px-3 py-3 text-[16px] font-semibold",
                       active
@@ -270,6 +269,7 @@ function MobileMenu({
                         <li key={sub.href}>
                           <Link
                             href={sub.href}
+                            onClick={onClose}
                             className="block rounded-[10px] px-3 py-2 text-[14.5px] text-[var(--color-slate-700)] hover:text-[var(--color-atlantic-900)]"
                           >
                             {sub.label}

@@ -21,7 +21,6 @@ import {
   industries,
   insights,
   services,
-  site,
 } from "@/lib/site";
 
 export default function HomePage() {
@@ -43,7 +42,7 @@ export default function HomePage() {
 /* ----------------------------- Hero ----------------------------- */
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-[var(--color-atlantic-900)] text-white">
+    <section className="relative isolate min-h-[calc(100svh-64px)] overflow-hidden bg-[var(--color-atlantic-900)] text-white sm:min-h-[calc(100svh-68px)]">
       {/* Background — looping marine video with gradient fallback */}
       <div className="absolute inset-0 -z-10" aria-hidden>
         <div
@@ -62,58 +61,25 @@ function Hero() {
         <div className="absolute inset-0 hero-veil" />
       </div>
 
-      <Container className="pt-28 pb-24 sm:pt-32 sm:pb-32 lg:pt-40 lg:pb-40">
-        <div className="max-w-[820px]">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[12px] text-white/80 backdrop-blur">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-orange-500)]" />
-            <span className="eyebrow !text-white/80">
-              Chief Engineer · Marine Lawyer · Independent
+      <Container className="flex min-h-[calc(100svh-64px)] items-start pt-10 pb-16 sm:min-h-[calc(100svh-68px)] sm:pt-12 sm:pb-20 lg:pt-12 lg:pl-[clamp(5rem,9vw,8.25rem)]">
+        <div className="max-w-[660px]">
+          <h1 className="[font-family:Georgia,_'Times_New_Roman',serif] text-[34px] leading-[0.94] font-bold tracking-[0.01em] text-white uppercase drop-shadow-[0_2px_16px_rgba(5,14,29,0.35)] sm:text-[46px] lg:text-[54px] xl:text-[60px]">
+            <span className="block">Technical expertise.</span>
+            <span className="block">Commercial strategy.</span>
+            <span className="block">Legal insight.</span>
+            <span className="mt-8 block text-[#e5bd82] sm:mt-9 lg:mt-10">
+              Protecting your
+              <br />
+              interests at sea.
             </span>
-          </div>
-
-          <h1 className="display mt-6 text-[40px] leading-[1.02] text-white sm:text-[56px] lg:text-[72px]">
-            {site.tagline}.
           </h1>
-          <p className="mt-6 max-w-[640px] text-[17px] leading-[1.6] text-white/75 sm:text-[19px]">
-            {site.subtagline}
+          <p className="mt-16 max-w-[470px] text-[15px] leading-[1.55] font-semibold text-white/90 drop-shadow-[0_2px_12px_rgba(5,14,29,0.45)] sm:mt-20 sm:text-[17px] lg:mt-24">
+            Independent expertise combining Chief Engineer experience,
+            commercial strategy, and maritime law insight.
           </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <LinkButton href="/services" variant="accent" size="lg" withArrow>
-              Review services
-            </LinkButton>
-            <LinkButton
-              href="/contact"
-              variant="secondary"
-              size="lg"
-              className="!bg-white/5 !border-white/20 !text-white hover:!border-white/40"
-            >
-              Request attendance
-            </LinkButton>
-          </div>
-
-          <dl className="mt-14 grid max-w-[640px] grid-cols-2 gap-8 sm:grid-cols-4">
-            <HeroStat value="25+" label="Years at sea & in office" />
-            <HeroStat value="400+" label="Attendances delivered" />
-            <HeroStat value="24/7" label="Technical attendance" />
-            <HeroStat value="ISO 19030" label="Performance methodology" />
-          </dl>
         </div>
       </Container>
     </section>
-  );
-}
-
-function HeroStat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <div className="num text-[22px] font-semibold text-white sm:text-[26px]">
-        {value}
-      </div>
-      <div className="mt-1 text-[12.5px] leading-snug text-white/60">
-        {label}
-      </div>
-    </div>
   );
 }
 
