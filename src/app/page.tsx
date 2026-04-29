@@ -61,19 +61,23 @@ function Hero() {
         <div className="absolute inset-0 hero-veil" />
       </div>
 
-      <Container className="flex min-h-[calc(100svh-64px)] items-start pt-10 pb-16 sm:min-h-[calc(100svh-68px)] sm:pt-12 sm:pb-20 lg:pt-12 lg:pl-[clamp(5rem,9vw,8.25rem)]">
+      <Container className="flex min-h-[calc(100svh-64px)] items-start pt-10 pb-16 sm:min-h-[calc(100svh-68px)] sm:pt-12 sm:pb-20 lg:pt-12">
         <div className="max-w-[660px]">
-          <h1 className="[font-family:Georgia,_'Times_New_Roman',serif] text-[34px] leading-[0.94] font-bold tracking-[0.01em] text-white uppercase drop-shadow-[0_2px_16px_rgba(5,14,29,0.35)] sm:text-[46px] lg:text-[54px] xl:text-[60px]">
-            <span className="block">Technical expertise.</span>
-            <span className="block">Commercial strategy.</span>
-            <span className="block">Legal insight.</span>
-            <span className="mt-8 block text-[#e5bd82] sm:mt-9 lg:mt-10">
+          <h1 className="[font-family:Georgia,_'Times_New_Roman',serif] text-[34px] leading-[0.9] font-bold tracking-[0.01em] text-white uppercase drop-shadow-[0_2px_16px_rgba(5,14,29,0.35)] sm:text-[46px] lg:text-[54px] xl:text-[60px]">
+            <span className="block whitespace-nowrap">Technical Expertise.</span>
+            <span className="mt-3 block whitespace-nowrap sm:mt-4">
+              Commercial Strategy.
+            </span>
+            <span className="mt-3 block whitespace-nowrap sm:mt-4">
+              Legal Insight.
+            </span>
+            <span className="mt-7 block text-[#e5bd82] sm:mt-8 lg:mt-9">
               Protecting your
               <br />
               interests at sea.
             </span>
           </h1>
-          <p className="mt-16 max-w-[470px] text-[15px] leading-[1.55] font-semibold text-white/90 drop-shadow-[0_2px_12px_rgba(5,14,29,0.45)] sm:mt-20 sm:text-[17px] lg:mt-24">
+          <p className="mt-16 max-w-[470px] text-[15px] leading-[1.55] font-semibold uppercase tracking-[0.04em] text-white/90 drop-shadow-[0_2px_12px_rgba(5,14,29,0.45)] sm:mt-20 sm:text-[17px] lg:mt-24">
             Independent expertise combining Chief Engineer experience,
             commercial strategy, and maritime law insight.
           </p>
