@@ -8,7 +8,7 @@ export function Footer() {
     (i) => !["Home", "Services"].includes(i.label),
   );
   return (
-    <footer className="border-t border-[var(--color-border)] bg-[var(--color-deck)] text-[var(--color-slate-800)]">
+    <footer className="border-t border-[var(--color-border)] !bg-[var(--color-deck)] !text-[var(--color-slate-800)]">
       <Container className="py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
